@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "Seasoned TrainerRoad",
+  "version": "1.0",
+  "description": "Enhanced experience for trainerroad.com",
+  "icons": {
+    "16": "icon.png"
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.trainerroad.com/app/cycling/workouts/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.trainerroad.com/app/cycling/workouts/*"],
+      "js": ["tr-content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["tr-background.js"]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icon.png"
+    }
+  }
+}
