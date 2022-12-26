@@ -1,4 +1,5 @@
-let workout = undefined;
+// Map from tabid to workout
+const workoutMap = {};
 
 function interceptWorkoutRequest(details) {
   const filter = browser.webRequest.filterResponseData(details.requestId);
@@ -13,7 +14,8 @@ function interceptWorkoutRequest(details) {
     filter.disconnect();
     const fullData = new Uint8Array(bytes);
     const json = new TextDecoder("utf-8").decode(fullData);
-    workout = JSON.parse(json);
+    workoutMap[details.tabId] = JSON.parse(json);
+    browser.pageAction.show(details.tabId);
   };
 }
 
@@ -23,13 +25,10 @@ browser.webRequest.onBeforeRequest.addListener(
   ["blocking"]
 );
 
-async function sendWorkoutToEditor() {
+function sendWorkoutToEditor(tab) {
+  const workout = workoutMap[tab.id];
   if (!workout) {
-    const tabs = await browser.tabs.query({
-      currentWindow: true,
-      active: true,
-    });
-    browser.tabs.sendMessage(tabs[0].id, "Unable to detect workout :(");
+    browser.tabs.sendMessage(tab.id, "Unable to detect workout :(");
     return;
   }
 
@@ -40,7 +39,7 @@ async function sendWorkoutToEditor() {
   });
 }
 
-browser.browserAction.onClicked.addListener(sendWorkoutToEditor);
+browser.pageAction.onClicked.addListener(sendWorkoutToEditor);
 
 function trainerroadToZwiftout(json) {
   const timeData = json.Workout.workoutData;

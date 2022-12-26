@@ -20,9 +20,10 @@
   "background": {
     "scripts": ["tr-background.js"]
   },
-  "browser_action": {
+  "page_action": {
     "default_icon": {
       "16": "icon.png"
-    }
+    },
+    "default_title": "Edit workout"
   }
 }
