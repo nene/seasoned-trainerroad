@@ -27,11 +27,6 @@ browser.webRequest.onBeforeRequest.addListener(
 
 function sendWorkoutToEditor(tab) {
   const workout = workoutMap[tab.id];
-  if (!workout) {
-    browser.tabs.sendMessage(tab.id, "Unable to detect workout :(");
-    return;
-  }
-
   browser.tabs.create({
     url:
       "https://nene.github.io/workout-editor/#" +

@@ -11,12 +11,6 @@
     "webRequestBlocking",
     "*://*.trainerroad.com/app/cycling/workouts/*"
   ],
-  "content_scripts": [
-    {
-      "matches": ["*://*.trainerroad.com/app/cycling/workouts/*"],
-      "js": ["tr-content.js"]
-    }
-  ],
   "background": {
     "scripts": ["tr-background.js"]
   },
