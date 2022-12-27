@@ -9,7 +9,8 @@
   "permissions": [
     "webRequest",
     "webRequestBlocking",
-    "*://*.trainerroad.com/app/cycling/workouts/*"
+    "webNavigation",
+    "https://www.trainerroad.com/*"
   ],
   "background": {
     "scripts": ["tr-background.js"]

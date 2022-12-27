@@ -31,6 +31,32 @@ browser.webRequest.onBeforeRequest.addListener(
   ["blocking"]
 );
 
+const isWorkoutPage = (url) =>
+  /https:\/\/www.trainerroad.com\/app\/cycling\/workouts\/\w+/i.test(url);
+
+function interceptMainPageRequest(details) {
+  // is it the top-level document?
+  if (details.frameId === 0) {
+    // When not on workout page, remove the workout entry (if any)
+    // and hide the page-action button
+    if (!isWorkoutPage(details.url)) {
+      workoutMap[details.tabId] = undefined;
+      browser.pageAction.hide(details.tabId);
+    }
+  }
+}
+
+browser.webNavigation.onBeforeNavigate.addListener(interceptMainPageRequest, {
+  url: [{ urlPrefix: "https://www.trainerroad.com/" }],
+});
+
+browser.webNavigation.onHistoryStateUpdated.addListener(
+  interceptMainPageRequest,
+  {
+    url: [{ urlPrefix: "https://www.trainerroad.com/" }],
+  }
+);
+
 function sendWorkoutToEditor(tab) {
   const workout = workoutMap[tab.id];
   browser.tabs.create({
