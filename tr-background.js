@@ -16,7 +16,7 @@ function interceptWorkoutRequest(details) {
     const json = new TextDecoder("utf-8").decode(fullData);
     const workout = JSON.parse(json);
     if (workout?.Workout) {
-      workoutMap[details.tabId] = workout;
+      workoutMap[details.tabId] = workout.Workout;
       browser.pageAction.show(details.tabId);
     } else {
       workoutMap[details.tabId] = undefined;
@@ -68,9 +68,9 @@ function sendWorkoutToEditor(tab) {
 
 browser.pageAction.onClicked.addListener(sendWorkoutToEditor);
 
-function trainerroadToZwiftout(json) {
-  const timeData = json.Workout.workoutData;
-  const intervals = json.Workout.intervalData;
+function trainerroadToZwiftout(workout) {
+  const timeData = workout.workoutData;
+  const intervals = workout.intervalData;
 
   function getPowerRange(start, end) {
     const startMs = start * 1000;
@@ -100,11 +100,9 @@ function trainerroadToZwiftout(json) {
   }
 
   const result = [];
-  result.push(`Name: ${json.Workout.Details.WorkoutName}`);
+  result.push(`Name: ${workout.Details.WorkoutName}`);
   result.push(`Author: TrainerRoad`);
-  result.push(
-    `Description: ${stripTags(json.Workout.Details.WorkoutDescription)}`
-  );
+  result.push(`Description: ${stripTags(workout.Details.WorkoutDescription)}`);
   result.push("");
 
   intervals.forEach((interval) => {
