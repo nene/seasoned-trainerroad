@@ -14,8 +14,14 @@ function interceptWorkoutRequest(details) {
     filter.disconnect();
     const fullData = new Uint8Array(bytes);
     const json = new TextDecoder("utf-8").decode(fullData);
-    workoutMap[details.tabId] = JSON.parse(json);
-    browser.pageAction.show(details.tabId);
+    const workout = JSON.parse(json);
+    if (workout?.Workout) {
+      workoutMap[details.tabId] = workout;
+      browser.pageAction.show(details.tabId);
+    } else {
+      workoutMap[details.tabId] = undefined;
+      browser.pageAction.hide(details.tabId);
+    }
   };
 }
 
