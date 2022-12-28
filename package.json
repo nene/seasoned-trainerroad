@@ -1,10 +1,16 @@
 {
   "name": "seasoned-trainerroad",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "web-ext build --source-dir src/ --artifacts-dir dist/"
+    "clean": "rm -rf out",
+    "copy-files": "mkdir out && cp src/manifest.json out/ && cp src/icon.png out/",
+    "bundle-js": "rollup --config rollup.config.js",
+    "package-ext": "web-ext build --source-dir out/ --artifacts-dir dist/",
+    "build": "yarn clean && yarn copy-files && yarn bundle-js && yarn package-ext"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "rollup": "^3.9.0",
     "web-ext": "^7.4.0"
   },
