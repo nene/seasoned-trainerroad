@@ -4,7 +4,7 @@
   "type": "module",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "clean": "rm -rf out",
+    "clean": "rm -rf out/ dist/",
     "copy-files": "mkdir out && cp src/manifest.json out/ && cp src/icon.png out/",
     "bundle-js": "rollup --config rollup.config.js",
     "package-ext": "web-ext build --source-dir out/ --artifacts-dir dist/",
