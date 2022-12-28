@@ -2,6 +2,7 @@
   "name": "seasoned-trainerroad",
   "private": true,
   "type": "module",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "clean": "rm -rf out",
     "copy-files": "mkdir out && cp src/manifest.json out/ && cp src/icon.png out/",
