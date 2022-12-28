@@ -2,7 +2,7 @@
   "name": "seasoned-trainerroad",
   "private": true,
   "scripts": {
-    "build": "web-ext build"
+    "build": "web-ext build --source-dir src/"
   },
   "devDependencies": {
     "web-ext": "^7.4.0"
