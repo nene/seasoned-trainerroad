@@ -1,0 +1,10 @@
+{
+  "name": "seasoned-trainerroad",
+  "private": true,
+  "scripts": {
+    "build": "web-ext build"
+  },
+  "devDependencies": {
+    "web-ext": "^7.4.0"
+  }
+}
