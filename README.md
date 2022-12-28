@@ -5,6 +5,8 @@ Clicking the button, opens the workout in [Zwiftout workout editor](https://nene
 which allows modifying the workout and downloading it as ZWO file
 for use in Zwift.
 
+![screenshot of the extension](./screenshot.png)
+
 ## Building
 
 ```sh
