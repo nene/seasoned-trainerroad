@@ -2836,6 +2836,11 @@ tough-cookie@~2.5.0:
     psl "^1.1.28"
     punycode "^2.1.1"
 
+trainerroad-to-zwiftout@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/trainerroad-to-zwiftout/-/trainerroad-to-zwiftout-1.0.0.tgz#19b5c30a108bebd4a6a85eaccbc9d5d605751b29"
+  integrity sha512-d14xYG3EyJrCKVfsfxOw2JyemFg4X3YLkc/nPjBHGa3Lz5jtmGv3yCzzxXwV3kPnRRWqw7WePR7uHj7I8g25Wg==
+
 tunnel-agent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
