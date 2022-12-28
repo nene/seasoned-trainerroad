@@ -5,6 +5,7 @@
     "build": "web-ext build --source-dir src/ --artifacts-dir dist/"
   },
   "devDependencies": {
+    "rollup": "^3.9.0",
     "web-ext": "^7.4.0"
   },
   "dependencies": {
